@@ -3,7 +3,6 @@ IN PROGRESS
 
 
 TO DO
-Add makefile
 Fix permissions during development
 Add composer install to build script
 Install Nelmo Alice
@@ -17,3 +16,4 @@ Fix docker on my computer
 Resolve issue with volume in nginx server
 Create docker for server
 Create simple API returning some random data
+Add makefile
