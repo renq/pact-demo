@@ -16,5 +16,8 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN usermod -u $APP_USER_ID www-data --shell /bin/bash
 RUN groupmod -g $APP_GROUP_ID www-data
 
+# main image
+
 FROM base
+WORKDIR /var/www/app
 COPY . .

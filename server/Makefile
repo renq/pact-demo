@@ -43,8 +43,8 @@ install: ## Install development environment
 	$(DOCKER_COMPOSE_DEV) build $(BUILD_ARGS) server
 
 
-.PHONY: start
-start: ## Run app in development environment
+.PHONY: dev
+dev: ## Run app in development environment
 	$(DOCKER_COMPOSE_DEV) down
 	$(DOCKER_COMPOSE_DEV) up -d
 
@@ -52,4 +52,10 @@ start: ## Run app in development environment
 .PHONY: stop
 stop: ## Stop app in development environment
 	$(DOCKER_COMPOSE_DEV) down
+	$(DOCKER_COMPOSE) down
 
+
+.PHONY: prod
+prod: ## Run app in prod environment
+	$(DOCKER_COMPOSE) build $(BUILD_ARGS) server
+	$(DOCKER_COMPOSE) up -d

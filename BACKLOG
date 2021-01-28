@@ -1,7 +1,6 @@
 IN PROGRESS
 
 
-
 TO DO
 Fix permissions during development
 Add composer install to build script
@@ -17,3 +16,4 @@ Resolve issue with volume in nginx server
 Create docker for server
 Create simple API returning some random data
 Add makefile
+Optimize Server docker image
