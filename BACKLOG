@@ -2,11 +2,10 @@ IN PROGRESS
 
 
 TO DO
-Fix permissions during development
-Add composer install to build script
-Install Nelmo Alice
 Create client
-
+??Install Nelmo Alice
+Install pact
+Write consumer api contract tests
 
 
 DONE
@@ -17,3 +16,5 @@ Create docker for server
 Create simple API returning some random data
 Add makefile
 Optimize Server docker image
+Add composer install to build script
+Fix permissions during development

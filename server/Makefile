@@ -45,8 +45,16 @@ install: ## Install development environment
 
 .PHONY: dev
 dev: ## Run app in development environment
+	make stop
 	$(DOCKER_COMPOSE_DEV) down
+	$(DOCKER_COMPOSE_DEV) build $(BUILD_ARGS) server
 	$(DOCKER_COMPOSE_DEV) up -d
+	$(DOCKER_COMPOSE_DEV) exec --user=www-data server composer install
+
+
+.PHONY: shell
+shell: ## Run shell in dev container
+	$(DOCKER_COMPOSE_DEV) exec server /bin/sh
 
 
 .PHONY: stop
@@ -57,5 +65,6 @@ stop: ## Stop app in development environment
 
 .PHONY: prod
 prod: ## Run app in prod environment
+	make stop
 	$(DOCKER_COMPOSE) build $(BUILD_ARGS) server
 	$(DOCKER_COMPOSE) up -d

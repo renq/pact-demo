@@ -3,3 +3,4 @@
 Makefile
 docker-compose*
 phpunit.xml
+vendor
