@@ -1,0 +1,7 @@
+.docker
+.git
+.gitignore
+Makefile
+docker-compose*
+phpunit.xml
+vendor
