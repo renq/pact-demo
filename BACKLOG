@@ -1,11 +1,10 @@
 IN PROGRESS
-Create CLI client
 
 
 TO DO
-??Install Nelmo Alice
-Install pact
-Write consumer api contract tests
+Write first simple consumer driven test
+Figure out how to run broker
+Write provider tests
 
 
 DONE
@@ -18,3 +17,5 @@ Add makefile
 Optimize Server docker image
 Add composer install to build script
 Fix permissions during development
+Create CLI client
+Install pact

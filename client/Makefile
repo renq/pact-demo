@@ -50,7 +50,7 @@ dev: ## Run app in development environment
 
 .PHONY: shell
 shell: ## Run shell in dev container
-	$(DOCKER_COMPOSE_DEV) run server /bin/sh
+	$(DOCKER_COMPOSE_DEV) run client /bin/sh
 
 
 .PHONY: prod
