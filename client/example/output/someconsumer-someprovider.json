@@ -1,0 +1,41 @@
+{
+  "consumer": {
+    "name": "someConsumer"
+  },
+  "provider": {
+    "name": "someProvider"
+  },
+  "interactions": [
+    {
+      "description": "A get request to /api/animals",
+      "request": {
+        "method": "GET",
+        "path": "/api/animals",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "species": "Penguin",
+            "name": "Kowalski"
+          },
+          {
+            "species": "Lion",
+            "name": "Simba"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

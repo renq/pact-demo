@@ -45,7 +45,8 @@ install: ## Install development environment
 .PHONY: dev
 dev: ## Run app in development environment
 	$(DOCKER_COMPOSE_DEV) build $(BUILD_ARGS)
-	$(DOCKER_COMPOSE_DEV) run --user=www-data client composer install
+	$(DOCKER_COMPOSE_DEV) run --user=www-data client composer install --ignore-platform-reqs
+	$(DOCKER_COMPOSE_DEV) up -d
 
 
 .PHONY: shell
@@ -59,5 +60,5 @@ prod: ## Run app in prod environment
 
 
 .PHONY: run
-run: ## Run app in prod environment
+run:
 	$(DOCKER_COMPOSE) run --user=www-data client

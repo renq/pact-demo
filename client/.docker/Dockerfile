@@ -1,5 +1,5 @@
 # BASE image
-FROM php:8-cli-alpine as base
+FROM php:8-cli-buster as base
 WORKDIR /var/www/app
 
 # Composer
@@ -11,8 +11,9 @@ FROM base as dev
 ARG APP_USER_ID
 ARG APP_GROUP_ID
 
-RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories
-RUN apk --no-cache add shadow && usermod -u 1000 www-data
+RUN usermod -u 1000 www-data
+
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
@@ -22,9 +23,9 @@ RUN groupmod -g $APP_GROUP_ID www-data
 # Build image (used for production image)
 FROM base as build
 
-RUN apk add --no-cache zip libzip-dev
-RUN docker-php-ext-configure zip
-RUN docker-php-ext-install zip
+RUN apt install zip libzip-dev \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
