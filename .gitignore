@@ -1,2 +1,5 @@
 .idea
 nbproject
+client/example
+server/example
+server/log

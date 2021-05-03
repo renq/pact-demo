@@ -9,7 +9,6 @@ use App\Animals\Animals;
 use App\Animals\AnimalsApiClient;
 use GuzzleHttp\Client;
 use PhpPact\Consumer\InteractionBuilder;
-use PhpPact\Consumer\Matcher\Matcher;
 use PhpPact\Consumer\Model\ConsumerRequest;
 use PhpPact\Consumer\Model\ProviderResponse;
 use PhpPact\Standalone\MockService\MockServerEnvConfig;
@@ -54,7 +53,6 @@ class AnimalsTest extends TestCase
         $apiClient = new AnimalsApiClient($guzzle, 'http://localhost:7200');
 
         $result = $apiClient->getAnimals();
-
         $builder->verify(); // This will verify that the interactions took place.
 
         $this->assertEquals(new Animals(

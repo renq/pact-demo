@@ -1,10 +1,6 @@
 IN PROGRESS
-Write provider tests
-
 
 TO DO
-Figure out how to run broker
-
 
 DONE
 Create server returning constant variable
@@ -19,3 +15,6 @@ Fix permissions during development
 Create CLI client
 Install pact
 Write first simple consumer driven test
+Create one docker-compose file
+Write provider tests
+Figure out how to run broker

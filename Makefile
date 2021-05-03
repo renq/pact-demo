@@ -39,18 +39,38 @@ help: ##@other Show this help.
 
 .PHONY: install
 install: ## Install development environment
+	$(DOCKER_COMPOSE_DEV) down
 	$(DOCKER_COMPOSE_DEV) build $(BUILD_ARGS)
 
 
 .PHONY: dev
 dev: ## Run app in development environment
+	$(DOCKER_COMPOSE_DEV) down
 	$(DOCKER_COMPOSE_DEV) build $(BUILD_ARGS)
 	$(DOCKER_COMPOSE_DEV) run --user=www-data client composer install --ignore-platform-reqs
+	$(DOCKER_COMPOSE_DEV) build $(BUILD_ARGS) server
 	$(DOCKER_COMPOSE_DEV) up -d
+	$(DOCKER_COMPOSE_DEV) exec --user=www-data server composer install --ignore-platform-reqs
 
 
-.PHONY: shell
-shell: ## Run shell in dev container
+.PHONY: stop
+stop: ## Stop the application
+	$(DOCKER_COMPOSE_DEV) down
+
+
+.PHONY: test
+test: ## Run app in development environment
+	$(DOCKER_COMPOSE_DEV) run --user=www-data client bin/phpunit
+	$(DOCKER_COMPOSE_DEV) exec --user=www-data server vendor/bin/phpunit
+
+
+.PHONY: shell-server
+shell-server: ## Run shell in dev container
+	$(DOCKER_COMPOSE_DEV) run server /bin/sh
+
+
+.PHONY: shell-client
+shell-client: ## Run shell in dev container
 	$(DOCKER_COMPOSE_DEV) run client /bin/sh
 
 
@@ -62,3 +82,4 @@ prod: ## Run app in prod environment
 .PHONY: run
 run:
 	$(DOCKER_COMPOSE) run --user=www-data client
+	$(DOCKER_COMPOSE) up -d

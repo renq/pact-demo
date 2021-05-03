@@ -12,10 +12,11 @@ class ApiContractTest extends TestCase
     {
         $config = new VerifierConfig();
         $config
-            ->setProviderName('animals') // Providers name to fetch.
+            ->setProviderName('animals provider') // Providers name to fetch.
             ->setProviderVersion('1.0.0') // Providers version.
-            ->setProviderBaseUrl(new Uri('http://localhost:58000')) // URL of the Provider.
+            ->setProviderBaseUrl(new Uri(getenv('PACT_PROVIDER_BASE_URL'))) // URL of the Provider.
             ->setBrokerUri(new Uri(getenv('PACT_BROKER_URI')))
+            ->setProviderVersion('1.0.1')
             ->setPublishResults(true)
         ;
 
